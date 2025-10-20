@@ -143,12 +143,12 @@ int main(void)
     printf("m : %d\n", m);
     */
     //MDROBOT 배터리 용량 선정 실습 _ MDH150
-    int A = 8;      //평균 전류
+    int A = 8;      // 평균 전류
     int vel = 6.4;  // 선속도 km/h
     int eta = 0.9;  // 시스템 효율 설정
     int R = 0.5;    // 예비율 설정
     int V = 24;     // 공칭 전압 24~48vdc
-    int C
+    int C = 60;     // 용량 60ah
 
     return 0;
 
