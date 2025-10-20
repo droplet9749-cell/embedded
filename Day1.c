@@ -3,7 +3,7 @@
 int main(void)
 {
     printf("Be happy");     //be happy 출력
-    printf("My freind");    //My freind 출력
+    printf("My freind\n");    //My freind 출력
 
     printf("Be happy\n");       //be happy 출력하고 줄을 바꿈 (\n)
     printf("12354678901234567890\n"); // 번호 입력하고 줄바꿈
