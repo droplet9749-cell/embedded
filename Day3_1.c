@@ -103,7 +103,8 @@
     */
 //}
 /* 함수 sum
-int sum(int x, int y); //함수 지정 순서 앞에 들어와도 정상 작동
+int sum(int x, int y); //함수 지정 순서 앞에 들어와도 정상 작동 but 메인 함수가
+//우선순위에 있기 때문에 매개 변수가 있는 int a = 10, b = 20; ... 해당 부분 우선 작성
 
 int sum(int x, int y)
 {
