@@ -53,7 +53,7 @@ int main(void)
 
 int main(void)
 {
-    int N, i;
+    int N, i, j;
 
     printf("주행 로그 개수를 입력하시오.\n");
     scanf("%d", &N);                                         // 속도측정 횟수입력
@@ -61,17 +61,40 @@ int main(void)
     srand(time(NULL));                                       // 랜덤 초기화
     int speed[N];
     int A;
+    int delta;                                               // 속도 변화량 정의
     A = rand() % 200;
     speed[0] = A;
-    
+    speed[1] = rand() %10 + A;
+    printf("%d번째 속도 : %d (km/h)\n", 1, speed[0]);
+    printf("%d번째 속도 : %d (km/h)\n", 2, speed[1]);
     for (i = 1; i < N; i++)
     {
-        // A = rand() % 200;                             // 랜덤 범위설정 : 0 ~ 150
-        speed[i] = rand() % 9 + A;                         // 랜덤 범위설정 : 0 ~ 150
-        printf("%d번째 속도 : %d (km/h)\n", i+1, speed[i]);           
+        // A = rand() % 200;                                 // 랜덤 범위설정 : 0 ~ 150
+        delta = speed[i] - speed[i-1]; 
+        printf("%d 속도차 : %d (km/h)\n",i, delta);
+
+        for (j = 0; j < 10; j++)
+        {
+            if (delta > 0)
+            {
+                speed[i] = (rand() %10) + speed[i-1];
+            }
+            else if (delta < 0)
+            {
+                speed[i] = speed[i-1] - rand() %10;
+            }
+            printf("%d번째 속도 : %d (km/h)\n", i+2, speed[i]);
+            i++;
+            if (i >= N)
+            {
+                break;
+            }
+        }
+        
+        // printf("%d번째 속도 : %d (km/h)\n", i, speed[i]);           
     }
 
-    int delta;                                               // 속도 변화량 정의
+    //int delta;                                             // 속도 변화량 정의 - > 상위에서 선언
     double delta_p;                                          // 급가속 정의
     double delta_m;                                          // 급제동 정의
     for (i = 1; i < N; i++)
