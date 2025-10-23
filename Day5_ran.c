@@ -85,7 +85,7 @@ int main(void)
             }
             printf("%d번째 속도 : %d (km/h)\n", i+2, speed[i]);
             i++;
-            if (i >= N)
+            if (i >= N)                                             // 오류 발생.
             {
                 break;
             }
