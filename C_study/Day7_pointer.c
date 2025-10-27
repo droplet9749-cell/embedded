@@ -272,7 +272,7 @@ int main(void)
         scanf("%c", &ch);
         printf("%c", ch);
     }
-    printf("%c", ch);
+    scanf("%c", ch);            // 버퍼로 남아있는건 sanf ! w? 입력값 대기 상태이므로
     printf("%c", ch);
     return 0;
 }
