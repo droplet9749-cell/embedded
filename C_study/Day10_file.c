@@ -67,7 +67,7 @@ int main(void)
 {
     FILE *fp;
     char str[100];
-    int i;
+    int i = 0;
 
     fp = fopen("log.txt", "r");
     if (fp == NULL)
@@ -75,21 +75,33 @@ int main(void)
         printf("파일을 찾지 못했습니다.\n");
         return 1;
     }
-    int err_cnt;
-    int err[];
+
+    int err_cnt, err_motor_cnt, err_sensor_cnt = 0;
+    int err[100], err_motor[100], err_sensor[100];
     while (fgets(str, sizeof(str), fp) != NULL)
     {
         printf("\n");
         printf("%s", str);
         if (strstr(str, "ERROR"))
         {
+            err[err_cnt] = i;
             err_cnt++;
-            err[i] = str[i];
             printf("\n오류 발생\n");
         }
-
+        if (strstr(str, "Motor overload"))
+        {
+            err_motor[err_motor_cnt] = i;
+            err_motor_cnt++;
+        }
+        if (strstr(str, "Sensor failed"))
+        {
+            err_sensor[err_sensor_cnt] = i;
+            err_sensor_cnt++;
+        }
     }
-    printf("오류 발생이 %d(회) 발생했습니다.", err_cnt);
+    printf("오류 발생이 %d(회) 발생했습니다.\n", err_cnt);
+    printf("모터 과부화 %d(회) 발생\n", err_motor_cnt);
+    printf("센서 인식 실패 %d(회) 발생\n", err_sensor_cnt);
 
     fclose(fp);
 }
